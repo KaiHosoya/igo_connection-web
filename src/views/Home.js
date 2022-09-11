@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from "recharts";
 import Header from "../component/Index/Header";
 import SideBar from "../component/SideBar/SideBar";
+import { authContent } from "../App"
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
+  const { currentUser } = useContext(authContent)
   const data = [
     {
       "name": "9月",
@@ -35,18 +38,20 @@ const Home = () => {
     }
   ]
   return (
-    <div style={styles.home}>
-      <SideBar />
-      <div style={styles.dashboard}>
-        <Header title="管理画面" />
-        <div style={styles.dashboardDescription}>毎月の添削数が表示されます</div>
-        <div style={styles.dashboardContent}>
-          <LineChart
-                    width={730}
-                    height={250}
-                    data={data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
+    <div>
+      { currentUser ? (
+        <div style={styles.home}>
+          <SideBar />
+          <div style={styles.dashboard}>
+            <Header title="管理画面" />
+            <div style={styles.dashboardDescription}>毎月の添削数が表示されます(サンプル)</div>
+            <div style={styles.dashboardContent}>
+            <LineChart
+              width={730}
+              height={250}
+              data={data}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
@@ -54,9 +59,13 @@ const Home = () => {
             <Legend />
             {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" /> */}
             <Line type="monotone" dataKey="添削数" stroke="#82ca9d" />
-          </LineChart>
+            </LineChart>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <Navigate to={`/`} />
+      )}
     </div>
   )
 }

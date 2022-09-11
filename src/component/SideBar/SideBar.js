@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // import SidebarIcon from "./SidebarIcon";
 import HomeIcon from "@mui/icons-material/Home";
 import ListAltIcon from '@mui/icons-material/ListAlt';
@@ -9,8 +9,12 @@ import CasinoIcon from '@mui/icons-material/Casino';
 // import SettingsIcon from "@mui/icons-material/Settings";
 import { Avatar } from "@mui/material";
 import "./SideBar.css"
+import { authContent } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const { currentUser } = useContext( authContent ) 
+  const navigate = useNavigate()
   const SidebarData = [
     {
       title: "ホーム",
@@ -54,7 +58,7 @@ const Sidebar = () => {
       <div className="profile">
         {/* アイコン画像とメアド */}
         <Avatar src="https://lh3.googleusercontent.com/wMl4j3hFxn171C6mY7nyCsbzb6yQiYZMB3euhfvjW7KK9wrcR1eqBnJYMxSM42CiMLxAu_EM6goYjFcZxuXXe8C1PUgIKF_OWPRS=w600" />
-        <p className="profileName">KaiHosoya</p>
+        <p className="profileName">{ currentUser?.email }</p>
       </div>
       <ul className="SidebarList">
         {SidebarData.map((value, key) => {
@@ -64,7 +68,7 @@ const Sidebar = () => {
               id={window.location.pathname === value.link ? "active" : ""}
               className="row"
               onClick={() => {
-                window.location.pathname = value.link;
+                navigate(value.link)
               }}
             >
               <div id="icon">{value.icon}</div>

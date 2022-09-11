@@ -10,9 +10,35 @@ import ApplicationForm from "./views/ApplicationForm";
 import Playback from "./views/Playback";
 import Login from "./views/Login";
 
+import { getCurrentUser } from "./lib/api/auth";
+import { createContext, useState, useEffect } from "react";
+
+export const authContent = createContext()
+
 function App() {
+  const [currentUser, setCurrentUser] = useState()
+
+
+  const handleGetCurrentUser = async () => {
+    try {
+      const res = await getCurrentUser
+      if (res?.data.isLogin === true) {
+        setCurrentUser(res?.data.data)
+      } else {
+        console.log("No Current User")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleGetCurrentUser()
+  }, [setCurrentUser])
+
   return (
     <BrowserRouter>
+      <authContent.Provider value={{ currentUser, setCurrentUser}}>
       <Routes>
         <Route path={`/`} element={<Login />} />
         <Route path={`/home`} element={<Home />} />
@@ -24,6 +50,7 @@ function App() {
         {/* <Route path={`/setting`} element={<Setting />} /> */}
         <Route path="*" element={<Navigate to={`/home`} />} />
       </Routes>
+      </authContent.Provider>
     </BrowserRouter>
   );
 }
