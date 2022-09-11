@@ -1,12 +1,13 @@
 import React from "react";
 // import SidebarIcon from "./SidebarIcon";
 import HomeIcon from "@mui/icons-material/Home";
-// import ListAltIcon from '@mui/icons-material/ListAlt';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import CasinoIcon from '@mui/icons-material/Casino';
 // import PersonAddIcon from "@mui/icons-material/PersonAdd";
 // import AddCardIcon from "@mui/icons-material/AddCard";
 // import BackupIcon from "@mui/icons-material/Backup";
 // import SettingsIcon from "@mui/icons-material/Settings";
+import { Avatar } from "@mui/material";
 import "./SideBar.css"
 
 const Sidebar = () => {
@@ -16,11 +17,11 @@ const Sidebar = () => {
       icon: <HomeIcon />,
       link: "/home",
     },
-    // {
-    //   title: "棋譜一覧",
-    //   icon: <ListAltIcon />,
-    //   link: "/index",
-    // },
+    {
+      title: "棋譜一覧",
+      icon: <ListAltIcon />,
+      link: "/index",
+    },
     {
       title: "添削依頼",
       icon: <CasinoIcon />,
@@ -50,7 +51,11 @@ const Sidebar = () => {
 
   return (
     <div className="Sidebar">
-      {/* <SidebarIcon /> */}
+      <div className="profile">
+        {/* アイコン画像とメアド */}
+        <Avatar src="https://lh3.googleusercontent.com/wMl4j3hFxn171C6mY7nyCsbzb6yQiYZMB3euhfvjW7KK9wrcR1eqBnJYMxSM42CiMLxAu_EM6goYjFcZxuXXe8C1PUgIKF_OWPRS=w600" />
+        <p className="profileName">KaiHosoya</p>
+      </div>
       <ul className="SidebarList">
         {SidebarData.map((value, key) => {
           return (

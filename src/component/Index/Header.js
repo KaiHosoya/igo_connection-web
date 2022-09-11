@@ -1,10 +1,10 @@
 import React from "react";
 import "./Header.css"
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="header">
-      <span className="name">指導者一覧</span>
+      <span className="name">{props.title}</span>
     </div>
   )
 }

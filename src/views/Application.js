@@ -13,7 +13,7 @@ const Application = () => {
     <div style={styles.application}>
       <Sidebar />
       <div>
-        <Header />
+      <Header title="指導者一覧"/>
         <List>
           <ListItem>
             <ListItemButton onClick={() => navigate(`/application/form`, {state: {name: "細谷 海"}})}>
@@ -83,7 +83,7 @@ const Application = () => {
           </ListItem>
           <Divider variant="inset" component="li" />
 
-          <ListItem>
+          {/* <ListItem>
             <ListItemButton onClick={() => navigate(`/application/form`, {state: {name: "芝野 龍之介"}})}>
               <ListItemAvatar>
                 <Avatar alt="Ryunosuke Shibano" src="https://pbs.twimg.com/profile_images/966372033201229824/UBHgoU41_400x400.jpg"/>
@@ -98,7 +98,7 @@ const Application = () => {
               />
             </ListItemButton>
           </ListItem>
-          <Divider variant="inset" component="li" />
+          <Divider variant="inset" component="li" /> */}
         </List>
       </div>
     </div>
