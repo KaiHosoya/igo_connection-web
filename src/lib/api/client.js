@@ -3,6 +3,8 @@ import applyCaseMiddleware from "axios-case-converter";
 // axiosをインポート
 import axios from "axios";
 
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 // ヘッダーはケバブケースのままにする
 const options = {
   ignoreHeaders: true,
