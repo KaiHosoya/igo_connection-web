@@ -57,8 +57,8 @@ const Sidebar = () => {
     <div className="Sidebar">
       <div className="profile">
         {/* アイコン画像とメアド */}
-        <Avatar src="https://lh3.googleusercontent.com/wMl4j3hFxn171C6mY7nyCsbzb6yQiYZMB3euhfvjW7KK9wrcR1eqBnJYMxSM42CiMLxAu_EM6goYjFcZxuXXe8C1PUgIKF_OWPRS=w600" />
-        <p className="profileName">{ currentUser?.email }</p>
+        <Avatar src="https://free-materials.com/adm/wp-content/uploads/2017/08/adpDSC_6917-750x499.jpg" />
+        <p className="profileName">{ currentUser?.name }</p>
       </div>
       <ul className="SidebarList">
         {SidebarData.map((value, key) => {

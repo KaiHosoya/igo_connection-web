@@ -10,7 +10,7 @@ const options = {
 
 // URLの共通部分を設定
 const client = applyCaseMiddleware(axios.create({
-  baseURL: "http://localhost:3000/api/v1/"
+  baseURL: process.env.REACT_APP_API_DOMEIN
 }), options)
 
 export default client;

@@ -9,6 +9,7 @@ import PlayerDetail from "./views/PlayerDetail";
 import ApplicationForm from "./views/ApplicationForm";
 import Playback from "./views/Playback";
 import Login from "./views/Login";
+import SignUp from "./views/SignUp";
 
 import { getCurrentUser } from "./lib/api/auth";
 import { createContext, useState, useEffect } from "react";
@@ -22,7 +23,7 @@ function App() {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser
-      if (res?.data.isLogin === true) {
+      if (res?.data) {
         setCurrentUser(res?.data.data)
       } else {
         console.log("No Current User")
@@ -41,6 +42,7 @@ function App() {
       <authContent.Provider value={{ currentUser, setCurrentUser}}>
       <Routes>
         <Route path={`/`} element={<Login />} />
+        <Route path={`/signup`} element={<SignUp />} />
         <Route path={`/home`} element={<Home />} />
         <Route path={`/index`} element={<Index />} />
         <Route path={`/index/playback`} element={<Playback />} />

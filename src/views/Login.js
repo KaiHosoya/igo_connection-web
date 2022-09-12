@@ -9,7 +9,6 @@ import {
   // Checkbox,
   // FormControlLabel,
   Grid,
-  Link,
   Paper,
   TextField,
   Typography
@@ -18,7 +17,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { teal } from "@mui/material/colors";
 import { authContent } from "../App";
 import { signIn } from "../lib/api/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Login = () => {
   const { setCurrentUser } = useContext( authContent)
   const navigate = useNavigate()
