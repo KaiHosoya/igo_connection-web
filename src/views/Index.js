@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Sidebar from "../component/SideBar/SideBar";
 import Header from "../component/Index/Header";
 import { Link, Navigate } from "react-router-dom";
 import { authContent } from "../App";
 
 const Index = () => {
-  const [files, setFiles] = useState()
+  // const [files, setFiles] = useState()
+  const files = ""
   const { currentUser } = useContext(authContent)
 
 
