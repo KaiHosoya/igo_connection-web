@@ -3,14 +3,18 @@ import client from "./client"
 
 // サインアップ（新規アカウント作成）
 export const signUp = (params) => {
-  return client.post("auth", params)
+  return client.post("auth", params, { withCredentials: true })
 }
 
 // サインイン（ログイン）
-export const signIn = (params)  => {
-  // return client.post("auth/sign_in", params, { withCredentials: true })
-  console.log(process.env.REACT_APP_API_DOMEIN)
-  return client.post("auth/sign_in", params)
+export const signIn = async(params)  => {
+  await client.post("auth/sign_in", params, { withCredentials: true })
+  .then((res) => {
+    return res
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 }
 
 // サインアウト（ログアウト）
