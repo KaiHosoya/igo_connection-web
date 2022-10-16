@@ -25,11 +25,17 @@ const Login = () => {
 
 
   const onSubmit =  async (data) => {
-    console.log(data)
+    // console.log(data)
 
     try {
       const res = await signIn(data)
-      if (res.status === 200) {
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      if (res?.status === 200) {
         Cookies.set("_access_token", res.headers["access-token"])
         Cookies.set("_client", res.headers["client"])
         Cookies.set("_uid", res.headers["uid"])

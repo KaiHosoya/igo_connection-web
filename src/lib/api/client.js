@@ -4,7 +4,7 @@ import applyCaseMiddleware from "axios-case-converter";
 import axios from "axios";
 
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 // ヘッダーはケバブケースのままにする
 const options = {

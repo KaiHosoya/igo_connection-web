@@ -7,14 +7,8 @@ export const signUp = (params) => {
 }
 
 // サインイン（ログイン）
-export const signIn = async(params)  => {
-  await client.post("auth/sign_in", params, { withCredentials: true })
-  .then((res) => {
-    return res
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+export const signIn = (params)  => {
+  return client.post("auth/sign_in", params, { withCredentials: true })
 }
 
 // サインアウト（ログアウト）
