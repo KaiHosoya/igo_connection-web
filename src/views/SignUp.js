@@ -18,7 +18,7 @@ const SignUp = () => {
 
     try {
       const res = await signUp(data)
-      if (res.status === 200) {
+      if (res?.status === 200) {
         // アカウント作成と同時にログインさせてしまう
         // 本来であればメール確認などを挟むべきだが、今回はサンプルなので
         Cookies.set("_access_token", res.headers["access-token"])
