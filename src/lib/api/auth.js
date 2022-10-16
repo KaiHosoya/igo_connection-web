@@ -4,6 +4,9 @@ import client from "./client"
 // サインアップ（新規アカウント作成）
 export const signUp = (params) => {
   return client.post("auth", params, { withCredentials: true })
+  .catch((err) => {
+    console.log(err)
+  })
 }
 
 // サインイン（ログイン）
